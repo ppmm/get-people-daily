@@ -38,7 +38,7 @@ class Paper(object):
         return self.get_pdf(pageurl,p),p
 
     def merge_pages(self,pdfs,o):
-        m = PdfFileMerger()
+        m = PdfFileMerger(strict=False)
         for pdf in pdfs:
             m.append(pdf)
         m.write(o)
@@ -54,7 +54,7 @@ class Paper(object):
                 break
             l.append(p)
             i += 1
-        #self.merge_pages(l,d+'/'self.paper_name)
+       # self.merge_pages(l,d+'/'self.paper_name)
 
 def main():
     opts, args = getopt.getopt(sys.argv[1:],'d:',['date='])
@@ -67,6 +67,8 @@ def main():
     p = Paper(year,month,day)
     p.get_paper()
 
+def test():
+    pass
 
 if __name__ == '__main__':
     main()
